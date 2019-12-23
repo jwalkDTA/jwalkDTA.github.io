@@ -55,6 +55,7 @@ typings/
 .env*
 
 # gatsby files
+public/
 .cache/
 
 # Mac files
