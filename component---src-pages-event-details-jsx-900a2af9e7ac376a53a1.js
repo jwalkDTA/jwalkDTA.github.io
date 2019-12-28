@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{"43no":function(n,e,t){"use strict";t.r(e);var a=t("q1tI"),l=t.n(a);t("Wbzz");e.default=function(){return l.a.createElement(l.a.Fragment,null,l.a.createElement("h1",null,"Event Details"))}}}]);
+//# sourceMappingURL=component---src-pages-event-details-jsx-900a2af9e7ac376a53a1.js.map
