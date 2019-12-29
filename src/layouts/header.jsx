@@ -7,6 +7,7 @@ import { Palette, Typography } from "../utils";
 const HeaderContainer = styled.div`
   background-color: ${Palette.siteBackground};
   position: relative;
+  margin-bottom: 120px;
 `;
 
 const TextContainer = styled.div`

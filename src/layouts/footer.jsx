@@ -5,8 +5,6 @@ import styled from "styled-components";
 import { Typography } from "../utils";
 
 const FooterWrapper = styled.div`
-  position: fixed;
-  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -20,7 +18,7 @@ const FooterText = styled.div`
 
 const Footer = () => (
   <FooterWrapper>
-    <FooterText>Made with  ❤️ by Jess & Jacy</FooterText>
+    <FooterText>Made with ❤️ by Jess & Jacy</FooterText>
   </FooterWrapper>
 );
 
