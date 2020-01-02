@@ -7,7 +7,6 @@ import { Palette, Typography } from "../utils";
 const HeaderContainer = styled.div`
   background-color: ${Palette.siteBackground};
   position: relative;
-  margin-bottom: 120px;
 `;
 
 const TextContainer = styled.div`
@@ -20,8 +19,8 @@ const TextContainer = styled.div`
 
 const Wordmark = styled(Link)`
   ${Typography.MainHeading};
+  line-height: 48px;
   text-decoration: none;
-  color: ${Palette.black};
   padding: 20px 0;
 `;
 
@@ -32,7 +31,6 @@ const Links = styled.div`
 const LinkStyle = css`
   ${Typography.Body};
   text-decoration: none;
-  color: ${Palette.black};
   margin-right: 32px;
 
   &:last-of-type {

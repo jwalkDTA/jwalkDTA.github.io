@@ -2,12 +2,13 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
-import { Typography } from "../utils";
+import { Palette, Typography } from "../utils";
 
 const FooterWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  background-color: ${Palette.lightText};
 `;
 
 const FooterText = styled.div`

@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Literata`, `Open Sans`],
+        fonts: [`Literata`, `Open Sans`, `Oxygen Mono`],
         display: "swap",
       },
     },

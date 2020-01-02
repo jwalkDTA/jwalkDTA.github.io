@@ -38,7 +38,6 @@ const CtaWrapper = styled.div``;
 
 const StyledLink = styled(Link)`
   ${Typography.BodyMediumButton}
-  color: ${Palette.lightText};
   text-decoration: none;
   background-color: ${Palette.evergreen};
   padding: 16px 88px;

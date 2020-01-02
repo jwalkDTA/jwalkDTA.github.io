@@ -8,7 +8,7 @@ import IllustrationModule from "../components/IllustrationModule";
 import HaikuModule from "../components/HaikuModule";
 
 const SideBySideWrapper = styled.div`
-  margin-bottom: 240px;
+  margin: 120px 0 240px 0;
 `;
 
 const IllustrationModuleWrapper = styled.div`
@@ -28,6 +28,7 @@ const IndexPage = ({ data }) => (
         cta="Learn about us"
         ctaLink="/our-story"
         image={data.heroImage.childImageSharp.fluid}
+        headerStyle="Large"
       />
     </SideBySideWrapper>
     <IllustrationModuleWrapper>
@@ -41,7 +42,11 @@ const IndexPage = ({ data }) => (
       />
     </IllustrationModuleWrapper>
     <HaikuModuleWrapper>
-      <HaikuModule firstLine="Together we stand" secondLine="Grounded and resilient" thirdLine="As evergreens do" />
+      <HaikuModule
+        firstLine="Together we stand"
+        secondLine="Grounded and resilient"
+        thirdLine="As evergreens do"
+      />
     </HaikuModuleWrapper>
   </>
 );
@@ -50,14 +55,14 @@ export const query = graphql`
   query HomepageQuery {
     heroImage: file(relativePath: { eq: "walking.png" }) {
       childImageSharp {
-        fluid(maxWidth: 708) {
+        fluid {
           ...GatsbyImageSharpFluid
         }
       }
     }
     illustrationImage: file(relativePath: { eq: "illustration.png" }) {
       childImageSharp {
-        fluid(maxWidth: 708) {
+        fluid {
           ...GatsbyImageSharpFluid
         }
       }
