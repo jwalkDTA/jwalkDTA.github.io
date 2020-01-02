@@ -4,13 +4,16 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { Typography, Palette } from "../utils";
 
+const HaikuModulebackground = styled.div`
+  background-color: ${Palette.evergreenBackground};
+`;
+
 const HaikuModuleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   aline-items: center;
   max-width: 1440px;
   margin: 0 auto;
-  background-color: ${Palette.evergreenBackground};
   padding: 96px 252px;
 `;
 
@@ -32,11 +35,13 @@ const ThirdLine = styled(Line)`
 `;
 
 const HaikuModule = ({ firstLine, secondLine, thirdLine }) => (
-  <HaikuModuleWrapper>
-    <FirstLine>{firstLine}</FirstLine>
-    <SecondLine>{secondLine}</SecondLine>
-    <ThirdLine>{thirdLine}</ThirdLine>
-  </HaikuModuleWrapper>
+  <HaikuModulebackground>
+    <HaikuModuleWrapper>
+      <FirstLine>{firstLine}</FirstLine>
+      <SecondLine>{secondLine}</SecondLine>
+      <ThirdLine>{thirdLine}</ThirdLine>
+    </HaikuModuleWrapper>
+  </HaikuModulebackground>
 );
 
 export default HaikuModule;

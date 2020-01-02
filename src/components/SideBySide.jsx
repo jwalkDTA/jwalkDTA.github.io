@@ -4,6 +4,10 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { Typography, Palette } from "../utils";
 
+const SideBySideBackground = styled.div`
+  background-color: ${({ backgroundColor }) => backgroundColor};
+`;
+
 const SideBySideWrapper = styled.div`
   display: flex;
   justify-content: space-around;
@@ -11,7 +15,6 @@ const SideBySideWrapper = styled.div`
   margin: 0 auto;
   flex-direction: ${({ reverse }) => (reverse ? "row-reverse" : "row")};
   padding: 112px 0 120px 0;
-  background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 
 const TextContainer = styled.div`
@@ -58,26 +61,28 @@ const SideBySide = ({
   backgroundColor,
   reverse,
 }) => (
-  <SideBySideWrapper backgroundColor={backgroundColor} reverse={reverse}>
-    <TextContainer reverse={reverse}>
-      <HeaderWrapper headerStyle={headerStyle}>{header}</HeaderWrapper>
-      {subheader && <SubheaderWrapper>{subheader}</SubheaderWrapper>}
-      {paragraphs &&
-        paragraphs.map(paragraphText => (
-          <ParagraphWrapper key={paragraphText}>
-            {paragraphText}
-          </ParagraphWrapper>
-        ))}
-      {cta && (
-        <CtaWrapper>
-          <StyledLink to={ctaLink}>{`${cta} ➞`}</StyledLink>
-        </CtaWrapper>
-      )}
-    </TextContainer>
-    <ImageContainer>
-      <Img fluid={image} />
-    </ImageContainer>
-  </SideBySideWrapper>
+  <SideBySideBackground backgroundColor={backgroundColor}>
+    <SideBySideWrapper reverse={reverse}>
+      <TextContainer reverse={reverse}>
+        <HeaderWrapper headerStyle={headerStyle}>{header}</HeaderWrapper>
+        {subheader && <SubheaderWrapper>{subheader}</SubheaderWrapper>}
+        {paragraphs &&
+          paragraphs.map(paragraphText => (
+            <ParagraphWrapper key={paragraphText}>
+              {paragraphText}
+            </ParagraphWrapper>
+          ))}
+        {cta && (
+          <CtaWrapper>
+            <StyledLink to={ctaLink}>{`${cta} ➞`}</StyledLink>
+          </CtaWrapper>
+        )}
+      </TextContainer>
+      <ImageContainer>
+        <Img fluid={image} />
+      </ImageContainer>
+    </SideBySideWrapper>
+  </SideBySideBackground>
 );
 
 export default SideBySide;
