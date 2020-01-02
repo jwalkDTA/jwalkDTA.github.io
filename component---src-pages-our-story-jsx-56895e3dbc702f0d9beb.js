@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{tdZ4:function(n,e,t){"use strict";t.r(e);var a=t("q1tI"),r=t.n(a);t("Wbzz");e.default=function(){return r.a.createElement(r.a.Fragment,null,r.a.createElement("h1",null,"Our Story"))}}}]);
-//# sourceMappingURL=component---src-pages-our-story-jsx-56895e3dbc702f0d9beb.js.map
