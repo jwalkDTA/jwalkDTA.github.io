@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import globalContext from "window-or-global";
 
 import { Palette, Typography } from "../utils";
 
@@ -18,9 +19,14 @@ const FooterText = styled.div`
 `;
 
 const Footer = () => (
-  <FooterWrapper>
-    <FooterText>Made with ❤️ by Jess & Jacy</FooterText>
-  </FooterWrapper>
+  <>
+    {globalContext.location &&
+      !globalContext.location.pathname.match(/event-details/) && (
+        <FooterWrapper>
+          <FooterText>Made with ❤️ by Jess & Jacy</FooterText>
+        </FooterWrapper>
+      )}
+  </>
 );
 
 export default Footer;
