@@ -6,6 +6,7 @@ import { Typography, Palette } from "../utils";
 const DetailsWrapper = styled.div`
   width: 100%;
   margin-left: 40px;
+  margin-bottom: 120px;
 `;
 
 const WestCeremonyHeading = styled.h1`
@@ -88,7 +89,7 @@ const WestCeremonyDetails = () => (
     <DateTime>Monday, May 18 · Time TBD</DateTime>
     <LocationHeader>Sugarpine Drive-In</LocationHeader>
     <LocationInfo>
-      Historic Columbia River Hwy, Troutdale, OR 97060
+      1208 E Historic Columbia River Hwy, Troutdale, OR 97060
     </LocationInfo>
     <Toggle>
       <AttireHeader>👚 Attire</AttireHeader>

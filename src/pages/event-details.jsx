@@ -20,16 +20,14 @@ const EventDetailsWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   min-height: 320px;
-  position: absolute;
   overflow: hidden;
-  top: 88px;
-  bottom: 0px;
+  height: calc(100vh - 88px);
   width: 100%;
 `;
 
 const LeftPanel = styled.div`
   width: 35vw;
-  height: calc(100vh - 88px);
+  height: 100%;
   position: relative;
   align-self: flex-start;
   padding-top: 80px;
@@ -39,21 +37,39 @@ const LeftPanel = styled.div`
 
 const RightPanel = styled.div`
   width: 65vw;
-  height: calc(100vh - 88px);
+  height: 100%;
   overflow: hidden;
 `;
 
-const EventDetailsInfo = styled.div``;
+const MapContainer = styled.iframe`
+  height: 100%;
+  width: 100%;
+  border: none;
+`;
 
-const LockScreenImage = data => (
-  <Img fluid={data.eventDetailsImage.childImageSharp.fluid} />
+const EastMap = () => (
+  <MapContainer
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.10056629769!2d-73.98530638459722!3d40.825754679319644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f7ad34ba2b9f%3A0x711a5ee8e8762aff!2s211%20Lawton%20Ave%2C%20Cliffside%20Park%2C%20NJ%2007010!5e0!3m2!1sen!2sus!4v1580678235714!5m2!1sen!2sus"
+    frameborder="0"
+    scrolling="no"
+  />
 );
 
-const MapContainer = styled.div`
-  background-color: blue;
-  width: 100%;
-  height: 100%;
-`;
+const WestMap = () => (
+  <MapContainer
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.870621209114!2d-122.83862458444142!3d45.65341987910362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495aa0784d7b7af%3A0x10c2d2ce8008b4fc!2s15500%20NW%20Ferry%20Rd%2C%20Portland%2C%20OR%2097231!5e0!3m2!1sen!2sus!4v1580678303252!5m2!1sen!2sus"
+    frameborder="0"
+    scrolling="no"
+  />
+);
+
+const WestCeremonyMap = () => (
+  <MapContainer
+    src="https://www.google.com/maps/d/u/2/embed?mid=1LTCyMQqJKYVprJhD0DdaMJ9VqAHo-fYw"
+    frameborder="0"
+    scrolling="no"
+  />
+);
 
 class EventDetails extends React.Component {
   state = {
@@ -108,6 +124,12 @@ class EventDetails extends React.Component {
       [EAST_PASSWORD]: EastDetails,
     }[panelUnlocked];
 
+    const MapComponent = {
+      [WEST_PASSWORD]: WestMap,
+      [WEST_CEREMONY_PASSWORD]: WestCeremonyMap,
+      [EAST_PASSWORD]: EastMap,
+    }[panelUnlocked];
+
     return (
       <EventDetailsWrapper>
         <LeftPanel>
@@ -122,7 +144,11 @@ class EventDetails extends React.Component {
           )}
         </LeftPanel>
         <RightPanel>
-          {!panelUnlocked ? LockScreenImage(data) : <MapContainer />}
+          {!panelUnlocked ? (
+            <Img fluid={data.eventDetailsImage.childImageSharp.fluid} />
+          ) : (
+            <MapComponent />
+          )}
         </RightPanel>
       </EventDetailsWrapper>
     );
