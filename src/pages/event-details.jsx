@@ -1,82 +1,133 @@
 import React, { useState } from "react";
-import { Link } from "gatsby";
-import globalContext from "window-or-global";
+import styled from "styled-components";
+import Img from "gatsby-image";
 
-import LockScreen from "../components/LockScreen";
+import EventDetailsForm from "../components/EventDetailsForm";
+import EastDetails from "../components/EastDetails";
+import WestDetails from "../components/WestDetails";
+import WestCeremonyDetails from "../components/WestCeremonyDetails";
 import { getItem, setItem } from "../utils/sessionStorage";
 
 const WEST_PASSWORD = "west";
 const WEST_CEREMONY_PASSWORD = "west ceremony";
 const EAST_PASSWORD = "east";
 
-const SESSION_KEY_WEST = "west_unlocked";
-const SESSION_KEY_WEST_CEREMONY = "west_ceremony_unlocked";
-const SESSION_KEY_EAST = "east_unlocked";
+const EVENT_DETAILS_SESSION_KEY = "event_details_screen";
 
-const EventDetails = ({ data }) => {
-  const westUnlockedSession = getItem(SESSION_KEY_WEST);
-  const westCeremonyUnlockedSession = getItem(SESSION_KEY_WEST_CEREMONY);
-  const eastUnlockedSession = getItem(SESSION_KEY_EAST);
+const EventDetailsWrapper = styled.div`
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 320px;
+  position: absolute;
+  overflow: hidden;
+  top: 88px;
+  bottom: 0px;
+  width: 100%;
+`;
 
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [westUnlocked, setWestUnlocked] = useState(westUnlockedSession);
-  const [westCeremonyUnlocked, setWestCeremonyUnlocked] = useState(
-    westCeremonyUnlockedSession
-  );
-  const [eastUnlocked, setEastUnlocked] = useState(eastUnlockedSession);
-  const [passwordWrong, setPasswordWrong] = useState(false);
+const LeftPanel = styled.div`
+  width: 35vw;
+  height: calc(100vh - 88px);
+  position: relative;
+  align-self: flex-start;
+  padding-top: 80px;
+  padding-right: 120px;
+  overflow-y: auto;
+`;
 
-  const checkPassword = () => {
-    switch (currentPassword) {
+const RightPanel = styled.div`
+  width: 65vw;
+  height: calc(100vh - 88px);
+  overflow: hidden;
+`;
+
+const EventDetailsInfo = styled.div``;
+
+const LockScreenImage = data => (
+  <Img fluid={data.eventDetailsImage.childImageSharp.fluid} />
+);
+
+const MapContainer = styled.div`
+  background-color: blue;
+  width: 100%;
+  height: 100%;
+`;
+
+class EventDetails extends React.Component {
+  state = {
+    currentPassword: "",
+    panelUnlocked: getItem(EVENT_DETAILS_SESSION_KEY),
+    passwordWrong: false,
+  };
+
+  checkPassword = () => {
+    switch (this.state.currentPassword) {
       case WEST_PASSWORD:
-        setWestUnlocked(true);
-        setWestCeremonyUnlocked(false);
-        setEastUnlocked(false);
-        setPasswordWrong(false);
-        setItem(SESSION_KEY_WEST, true);
+        this.setState({
+          panelUnlocked: WEST_PASSWORD,
+          passwordWrong: false,
+        });
+        setItem(EVENT_DETAILS_SESSION_KEY, WEST_PASSWORD);
         break;
       case WEST_CEREMONY_PASSWORD:
-        setWestUnlocked(false);
-        setWestCeremonyUnlocked(true);
-        setEastUnlocked(false);
-        setPasswordWrong(false);
-        setItem(SESSION_KEY_WEST_CEREMONY, true);
+        this.setState({
+          panelUnlocked: WEST_CEREMONY_PASSWORD,
+          passwordWrong: false,
+        });
+        setItem(EVENT_DETAILS_SESSION_KEY, WEST_CEREMONY_PASSWORD);
         break;
       case EAST_PASSWORD:
-        setWestUnlocked(false);
-        setWestCeremonyUnlocked(false);
-        setEastUnlocked(true);
-        setPasswordWrong(false);
-        setItem(SESSION_KEY_EAST, true);
+        this.setState({
+          panelUnlocked: EAST_PASSWORD,
+          passwordWrong: false,
+        });
+        setItem(EVENT_DETAILS_SESSION_KEY, EAST_PASSWORD);
         break;
       default:
-        setWestUnlocked(false);
-        setWestCeremonyUnlocked(false);
-        setEastUnlocked(false);
-        setPasswordWrong(true);
-        setItem(SESSION_KEY_WEST, false);
-        setItem(SESSION_KEY_EAST, false);
+        this.setState({
+          panelUnlocked: null,
+          passwordWrong: true,
+        });
+        setItem(EVENT_DETAILS_SESSION_KEY, null);
     }
   };
 
-  const isLocked = !westUnlocked && !westCeremonyUnlocked && !eastUnlocked;
+  setCurrentPassword = password => {
+    this.setState({ currentPassword: password });
+  };
 
-  return (
-    <>
-      {isLocked && (
-        <LockScreen
-          passwordWrong={passwordWrong}
-          setCurrentPassword={setCurrentPassword}
-          checkPassword={checkPassword}
-          image={data.eventDetailsImage.childImageSharp.fluid}
-        />
-      )}
-      {westUnlocked && <p>West Details</p>}
-      {westCeremonyUnlocked && <p>West Ceremony Details</p>}
-      {eastUnlocked && <p>East Details</p>}
-    </>
-  );
-};
+  render() {
+    const { currentPassword, passwordWrong, panelUnlocked } = this.state;
+    const { data } = this.props;
+
+    const EventDetailsComponent = {
+      [WEST_PASSWORD]: WestDetails,
+      [WEST_CEREMONY_PASSWORD]: WestCeremonyDetails,
+      [EAST_PASSWORD]: EastDetails,
+    }[panelUnlocked];
+
+    return (
+      <EventDetailsWrapper>
+        <LeftPanel>
+          {!panelUnlocked ? (
+            <EventDetailsForm
+              passwordWrong={passwordWrong}
+              setCurrentPassword={this.setCurrentPassword}
+              checkPassword={this.checkPassword}
+            />
+          ) : (
+            <EventDetailsComponent />
+          )}
+        </LeftPanel>
+        <RightPanel>
+          {!panelUnlocked ? LockScreenImage(data) : <MapContainer />}
+        </RightPanel>
+      </EventDetailsWrapper>
+    );
+  }
+}
 
 export const query = graphql`
   query EventDetailsQuery {

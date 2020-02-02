@@ -6,6 +6,7 @@ const Palette = {
   salmonBackground: "#FADAC8",
   siteBackground: "#F4F1E7",
   textBrown: "#4D2D19",
+  dividerGray: "#B8B3B0",
 };
 
 export default Palette;

@@ -10,6 +10,15 @@ const MainHeading = css`
   color: ${Palette.textBrown};
 `;
 
+const HeaderSmall = css`
+  font-family: Literata;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: ${Palette.textBrown};
+`;
+
 const HeaderMedium = css`
   font-family: Literata;
   font-style: normal;
@@ -94,9 +103,9 @@ const AccentSmall = css`
 
 const Typography = {
   MainHeading,
-  BodyMedium,
   BodyMediumButton,
   BodyMediumBold,
+  HeaderSmall,
   HeaderMedium,
   HeaderLarge,
   Body,
