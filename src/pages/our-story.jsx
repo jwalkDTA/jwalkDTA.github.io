@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 import HeroTextModule from "../components/HeroTextModule";
 import TriPanel from "../components/TriPanel";
-import JigokudaniDivider from "../components/JigokudaniDivider";
+import Divider from "../components/Divider";
 import SideBySide from "../components/SideBySide";
 import { Palette, Typography } from "../utils";
 import CtaSandwich from "../components/CtaSandwich";
@@ -11,6 +11,7 @@ import CtaSandwich from "../components/CtaSandwich";
 const OurStory = ({ data }) => (
   <>
     <HeroTextModule
+      backgroundColor={Palette.evergreenBackground}
       header="One Summer's Day"
       paragraphs={[
         "Jess and Jacy first met in Eugene, Oregon at University of Oregon’s Summer Music Camp in July 2008.",
@@ -49,9 +50,7 @@ const OurStory = ({ data }) => (
         },
       ]}
     />
-    <JigokudaniDivider
-      image={data.jigokudaniDividerImage.childImageSharp.fluid}
-    />
+    <Divider image={data.jigokudaniDividerImage.childImageSharp.fluid} />
     <SideBySide
       header="A match made in Hell (Valley)"
       paragraphs={[
@@ -59,6 +58,7 @@ const OurStory = ({ data }) => (
         "Noboribetsu is known for its hot springs and Jigokudani (地獄谷), which literally translates to “Hell Valley”.",
       ]}
       image={data.jigokudaniImage.childImageSharp.fluid}
+      imageWidth="750"
       backgroundColor={Palette.salmonBackground}
       headerStyle="Medium"
       reverse

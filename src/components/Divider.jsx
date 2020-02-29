@@ -4,10 +4,10 @@ import styled from "styled-components";
 
 const DividerWrapper = styled.div``;
 
-const JigokudaniDivider = ({ image }) => (
+const Divider = ({ image }) => (
   <DividerWrapper>
     <Img fluid={image} />
   </DividerWrapper>
 );
 
-export default JigokudaniDivider;
+export default Divider;

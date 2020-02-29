@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Typography, Palette } from "../utils";
+import { Typography } from "../utils";
 
 const HeroTextModuleBackground = styled.div`
-  background-color: ${Palette.evergreenBackground};
+  background-color: ${({ color }) => color};
 `;
 
 const HeroTextModuleWrapper = styled.div`
@@ -30,8 +30,8 @@ const TextWrapper = styled.div`
   }
 `;
 
-const HeroTextModule = ({ header, paragraphs }) => (
-  <HeroTextModuleBackground>
+const HeroTextModule = ({ backgroundColor, header, paragraphs }) => (
+  <HeroTextModuleBackground color={backgroundColor}>
     <HeroTextModuleWrapper>
       <HeaderWrapper>{header}</HeaderWrapper>
       {paragraphs.map(paragraphText => (

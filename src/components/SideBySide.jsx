@@ -24,7 +24,7 @@ const TextContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 750px;
+  width: ${({ imageWidth }) => `${imageWidth}px`};
 `;
 
 const HeaderWrapper = styled.div`
@@ -46,7 +46,7 @@ const CtaWrapper = styled.div``;
 
 const StyledLink = styled(Link)`
   ${Typography.BodyMediumBold}
-  color: ${Palette.ctaRed};
+  color: ${Palette.evergreen};
   text-decoration: none;
 `;
 
@@ -58,6 +58,7 @@ const SideBySide = ({
   cta,
   ctaLink,
   image,
+  imageWidth,
   backgroundColor,
   reverse,
 }) => (
@@ -78,7 +79,7 @@ const SideBySide = ({
           </CtaWrapper>
         )}
       </TextContainer>
-      <ImageContainer>
+      <ImageContainer imageWidth={imageWidth}>
         <Img fluid={image} />
       </ImageContainer>
     </SideBySideWrapper>

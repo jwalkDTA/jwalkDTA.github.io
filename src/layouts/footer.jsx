@@ -9,7 +9,7 @@ const FooterWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: ${Palette.lightText};
+  background-color: ${Palette.white};
 `;
 
 const FooterText = styled.div`

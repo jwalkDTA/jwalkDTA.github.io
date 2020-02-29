@@ -28,6 +28,7 @@ const IndexPage = ({ data }) => (
         cta="Learn about us"
         ctaLink="/our-story"
         image={data.heroImage.childImageSharp.fluid}
+        imageWidth="750"
         headerStyle="Large"
       />
     </SideBySideWrapper>

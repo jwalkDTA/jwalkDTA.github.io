@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled, { css } from "styled-components";
 
+import LinkIcon from "../images/open_in_new-24px.svg";
 import { Palette, Typography } from "../utils";
 
 const HeaderContainer = styled.div`
@@ -28,6 +29,18 @@ const Links = styled.div`
   display: flex;
 `;
 
+const ExternalLinkWrapper = styled.div`
+  display: flex;
+  margin-right: 32px;
+`;
+
+const StyledLinkIcon = styled(LinkIcon)`
+  width: 16px;
+  path {
+    fill: ${Palette.textBrown};
+  }
+`;
+
 const LinkStyle = css`
   ${Typography.Body};
   text-decoration: none;
@@ -43,6 +56,7 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledExternalLink = styled.a`
+  margin-right: 8px !important;
   ${LinkStyle}
 `;
 
@@ -54,9 +68,12 @@ const Header = ({ siteTitle }) => (
         <StyledLink to="our-story">Our Story</StyledLink>
         <StyledLink to="event-details">Event Details</StyledLink>
         <StyledLink to="senbazuru">Senbazuru</StyledLink>
-        <StyledExternalLink href="https://www.zola.com/registry/jwalkdowntheaisle">
-          Registry
-        </StyledExternalLink>
+        <ExternalLinkWrapper>
+          <StyledExternalLink href="https://www.zola.com/registry/jwalkdowntheaisle">
+            Registry
+          </StyledExternalLink>
+          <StyledLinkIcon />
+        </ExternalLinkWrapper>
         <StyledLink to="contact-us">Contact Us</StyledLink>
       </Links>
     </TextContainer>
