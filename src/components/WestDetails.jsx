@@ -19,6 +19,7 @@ const DateTime = styled.div`
 
 const LocationHeader = styled.div`
   ${Typography.BodyMediumBold}
+  margin-bottom: 8px;
 `;
 
 const LocationInfo = styled.div`
@@ -33,7 +34,7 @@ const Divider = styled.div`
 `;
 
 const AttireHeader = styled.div`
-  ${Typography.HeaderSmall}
+  ${Typography.BodyMediumBold}
   margin-bottom: 8px;
 `;
 
@@ -43,7 +44,7 @@ const AttireInfo = styled.div`
 `;
 
 const ParkingHeader = styled.div`
-  ${Typography.HeaderSmall}
+  ${Typography.BodyMediumBold}
   margin-bottom: 8px;
 `;
 
@@ -53,7 +54,7 @@ const ParkingInfo = styled.div`
 `;
 
 const DirectionsHeader = styled.div`
-  ${Typography.HeaderSmall}
+  ${Typography.BodyMediumBold}
   margin-bottom: 8px;
 `;
 

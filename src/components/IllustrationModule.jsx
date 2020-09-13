@@ -15,7 +15,8 @@ const IllustrationModuleWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   width: 936px;
-  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-bottom: 48px;
 `;
 
 const HeaderWrapper = styled.div`
@@ -30,11 +31,9 @@ const SubheaderWrapper = styled.div`
 
 const TextWrapper = styled.div`
   ${Typography.BodyMedium}
-  max-width: 744px;
+  max-width: 760px;
   margin-bottom: 40px;
 `;
-
-const CtaWrapper = styled.div``;
 
 const StyledLink = styled(Link)`
   ${Typography.BodyMediumButton}

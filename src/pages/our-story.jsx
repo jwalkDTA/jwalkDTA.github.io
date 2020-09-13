@@ -15,7 +15,7 @@ const OurStory = ({ data }) => (
       header="One Summer's Day"
       paragraphs={[
         "Jess and Jacy first met in Eugene, Oregon at University of Oregon’s Summer Music Camp in July 2008.",
-        "They were both band geeks music aficionados who loved playing the alto saxophone so much that they attended the same week-long program three years in a row.",
+        "They were both b̶a̶n̶d̶ ̶g̶e̶e̶k̶s̶ music aficionados who loved playing the alto saxophone so much that they attended the same week-long program three years in a row.",
       ]}
     />
     <TriPanel
@@ -50,7 +50,7 @@ const OurStory = ({ data }) => (
         },
       ]}
     />
-    <Divider image={data.jigokudaniDividerImage.childImageSharp.fluid} />
+    <Divider image={data.jigokudaniTopDividerImage.childImageSharp.fluid} />
     <SideBySide
       header="A match made in Hell (Valley)"
       paragraphs={[
@@ -63,10 +63,11 @@ const OurStory = ({ data }) => (
       headerStyle="Medium"
       reverse
     />
+    <Divider image={data.jigokudaniBottomDividerImage.childImageSharp.fluid} />
     <CtaSandwich
       header="Jess & Jacy are getting married"
       subheader="Celebrate with them as they kick off married life together in style."
-      cta="View Event Details"
+      cta="View event details"
       ctaLink="/event-details"
       leftImage={data.jacyImage.childImageSharp.fluid}
       rightImage={data.jessImage.childImageSharp.fluid}
@@ -97,8 +98,8 @@ export const query = graphql`
         }
       }
     }
-    jigokudaniDividerImage: file(
-      relativePath: { eq: "jigokudaniDivider.png" }
+    jigokudaniTopDividerImage: file(
+      relativePath: { eq: "jigokudaniTopDivider.png" }
     ) {
       childImageSharp {
         fluid {
@@ -106,7 +107,16 @@ export const query = graphql`
         }
       }
     }
-    jigokudaniImage: file(relativePath: { eq: "jigokudani.png" }) {
+    jigokudaniBottomDividerImage: file(
+      relativePath: { eq: "jigokudaniBottomDivider.png" }
+    ) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    jigokudaniImage: file(relativePath: { eq: "jigokudani.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

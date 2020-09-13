@@ -13,14 +13,14 @@ const CtaSandwichWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 264px;
+  width: 208px;
 
   &:first-of-type {
-    margin-right: 24px;
+    margin-right: 48px;
   }
 
   &:last-of-type {
-    margin-left: 24px;
+    margin-left: 48px;
   }
 `;
 

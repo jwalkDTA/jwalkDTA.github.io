@@ -27,6 +27,7 @@ const Senbazuru = ({ data }) => (
       imageWidth="522"
       headerStyle="Medium"
       reverse
+      externalLink
     />
     <Divider image={data.paperDividerImage.childImageSharp.fluid} />
     <SenbazuruProgress />

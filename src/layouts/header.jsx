@@ -74,7 +74,7 @@ const Header = ({ siteTitle }) => (
           </StyledExternalLink>
           <StyledLinkIcon />
         </ExternalLinkWrapper>
-        <StyledLink to="contact-us">Contact Us</StyledLink>
+        <StyledExternalLink href="mailto:jwalkdowntheaisle@gmail.com">Contact Us</StyledExternalLink>
       </Links>
     </TextContainer>
   </HeaderContainer>

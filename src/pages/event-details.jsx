@@ -157,7 +157,7 @@ class EventDetails extends React.Component {
 
 export const query = graphql`
   query EventDetailsQuery {
-    eventDetailsImage: file(relativePath: { eq: "event-details.png" }) {
+    eventDetailsImage: file(relativePath: { eq: "event-details.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid

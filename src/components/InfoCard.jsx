@@ -12,7 +12,8 @@ const InfoCardWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin-bottom: 24px;
+  width: 240px;
+  margin: 0 auto;
 `;
 
 const DateTextWrapper = styled.div`
